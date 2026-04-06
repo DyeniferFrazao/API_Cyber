@@ -66,5 +66,4 @@ def api_status():
     return jsonify({"status": "online", "ip_cliente": request.remote_addr})
 
 if __name__ == '__main__':
-    # Troque pelo seu IP VPN real
-    app.run(host='100.96.0.5', port=5000, debug=False)
+    app.run(host='100.96.1.2', port=5000, debug=False)

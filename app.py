@@ -26,5 +26,4 @@ def status():
     return jsonify({"status": "online", "servidor": "Admin-VPN", "ip_cliente": request.remote_addr})
 
 if __name__ == '__main__':
-    # CRÍTICO: bind APENAS no IP da VPN, não no 0.0.0.0
-    app.run(host='IP_VPN_AQUI', port=5000)
+    app.run(host='100.96.1.2', port=5000, debug=False)
