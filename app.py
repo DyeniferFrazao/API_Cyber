@@ -1,29 +1,22 @@
-# app.py
-from flask import Flask, jsonify, request
+from flask import Flask, request, send_file, jsonify
 import datetime
+import os
 
 app = Flask(__name__)
 
-
-dados_sensiveis = [
-    {"id": 1, "projeto": "Projeto Alpha", "status": "Em andamento", "responsavel": "Admin"},
-    {"id": 2, "projeto": "Projeto Beta", "status": "Concluído", "responsavel": "Equipe A"},
-    {"id": 3, "projeto": "Projeto Gamma", "status": "Planejamento", "responsavel": "Equipe B"},
-]
-
 @app.route('/')
 def index():
-    return '''<h1>Dashboard Corporativo Interno</h1>
-              <p>Ativo crítico protegido por VPN</p>
-              <p>Acesse /api/projetos para ver os dados.</p>'''
+    return send_file('dashboard.html')
 
-@app.route('/api/projetos', methods=['GET'])
-def listar_projetos():
-    return jsonify({"projetos": dados_sensiveis, "acesso_em": str(datetime.datetime.now())})
-
-@app.route('/api/status', methods=['GET'])
-def status():
-    return jsonify({"status": "online", "servidor": "Admin-VPN", "ip_cliente": request.remote_addr})
+@app.route('/api/status')
+def api_status():
+    return jsonify({
+        "status": "online",
+        "servidor": "Admin-VPN-macOS",
+        "ip_cliente": request.remote_addr,
+        "acesso_em": str(datetime.datetime.now())
+    })
 
 if __name__ == '__main__':
+    # Troque pelo seu IP VPN real
     app.run(host='100.96.1.2', port=5000, debug=False)
