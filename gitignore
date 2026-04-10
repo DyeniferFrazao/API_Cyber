@@ -1,0 +1,71 @@
+# =============================================================================
+#  CyberShield SOC — .gitignore
+#  Protege dados sensíveis e mantém o repositório limpo
+# =============================================================================
+
+# ---- LOGS DE AUDITORIA (contêm IPs, usuários, eventos sensíveis) ----
+*.log
+access_audit.log
+
+# ---- SEGREDOS E CONFIGURAÇÕES SENSÍVEIS ----
+.env
+*.pem
+*.key
+*.crt
+*.p12
+config.local.py
+secrets.py
+
+# ---- PERFIS E ARQUIVOS VPN ----
+*.ovpn
+*.conf
+*.tblk/
+
+# ---- PYTHON ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# ---- AMBIENTE VIRTUAL ----
+venv/
+.venv/
+env/
+.env/
+
+# ---- FLASK ----
+instance/
+flask_session/
+
+# ---- SISTEMA OPERACIONAL ----
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+desktop.ini
+ehthumbs.db
+
+# Linux
+*~
+.nfs*
+
+# ---- IDEs E EDITORES ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# ---- CAPTURAS DE TELA DO RELATÓRIO ----
+# (não pertencem ao código-fonte)
+screenshots/
+evidencias/

@@ -1,2 +1,63 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# =============================================================================
+#  CyberShield SOC — .gitattributes
+#  Controla como o Git trata cada tipo de arquivo no repositório
+# =============================================================================
+
+# ---- NORMALIZAÇÃO DE QUEBRAS DE LINHA ----
+# Força LF em todos os arquivos de texto (evita conflitos macOS/Windows/Linux)
+* text=auto eol=lf
+
+# ---- CÓDIGO-FONTE (sempre texto, sempre LF) ----
+*.py        text eol=lf diff=python
+*.html      text eol=lf diff=html
+*.css       text eol=lf
+*.js        text eol=lf
+*.json      text eol=lf
+*.md        text eol=lf diff=markdown
+*.txt       text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+*.toml      text eol=lf
+*.cfg       text eol=lf
+*.ini       text eol=lf
+*.sh        text eol=lf
+
+# ---- CONFIGURAÇÃO DO PROJETO ----
+.gitignore      text eol=lf
+.gitattributes  text eol=lf
+.env.example    text eol=lf
+Makefile        text eol=lf
+Dockerfile      text eol=lf
+requirements.txt text eol=lf
+
+# ---- ARQUIVOS BINÁRIOS (nunca fazer diff/merge) ----
+*.pdf       binary
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.ico       binary
+*.zip       binary
+*.tar.gz    binary
+*.gz        binary
+
+# ---- ARQUIVOS VPN E CERTIFICADOS (binário, sem diff) ----
+*.ovpn      binary
+*.pem       binary
+*.key       binary
+*.crt       binary
+*.p12       binary
+
+# ---- EXPORT-IGNORE (excluídos ao gerar .zip de release) ----
+# Estes arquivos não vão para o pacote de distribuição
+.gitignore      export-ignore
+.gitattributes  export-ignore
+screenshots/    export-ignore
+evidencias/     export-ignore
+*.log           export-ignore
+.vscode/        export-ignore
+.idea/          export-ignore
+
+# ---- LINGUAGEM DO REPOSITÓRIO (GitHub) ----
+# Garante que o GitHub identifique o projeto como Python, não HTML
+dashboard.html  linguist-vendored
